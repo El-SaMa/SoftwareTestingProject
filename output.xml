@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20231013 19:50:41.666" rpa="false" schemaversion="4">
+<suite id="s1" name="Testingjimmy" source="c:\Users\ELSAMA\Documents\github\SoftwareTestingProject\testingjimmy.robot">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>http://jimms.fi</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231013 19:50:41.883" level="INFO">Opening browser 'chrome' to base url 'http://jimms.fi'.</msg>
+<status status="PASS" starttime="20231013 19:50:41.882" endtime="20231013 19:50:45.593"/>
+</kw>
+<test id="s1-t1" name="TC_UI_1 Verify All Product Categories Have a Landing Page" line="14">
+<doc>Verify if all product categories have a "landing page".</doc>
+<tag>Medium</tag>
+<status status="FAIL" starttime="20231013 19:50:45.593" endtime="20231013 19:50:45.594">Test cannot be empty.</status>
+</test>
+<test id="s1-t2" name="TC_UI_2 Test Search Feature Using Keyword PS5" line="20">
+<kw name="Navigate To Main Page" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>http://jimms.fi</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20231013 19:50:45.596" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231013 19:50:45.596" endtime="20231013 19:50:46.274"/>
+</kw>
+<status status="PASS" starttime="20231013 19:50:45.596" endtime="20231013 19:50:46.274"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${SEARCH_INPUT_LOCATOR}</arg>
+<arg>${SEARCH_KEYWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231013 19:50:46.276" level="INFO">Typing text 'ps5' into text field 'id:search-input'.</msg>
+<msg timestamp="20231013 19:50:46.522" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231013 19:50:46.523" level="FAIL">Element with locator 'id:search-input' not found.</msg>
+<status status="FAIL" starttime="20231013 19:50:46.275" endtime="20231013 19:50:46.571"/>
+</kw>
+<kw name="Submit Form" library="SeleniumLibrary">
+<doc>Submits a form identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231013 19:50:46.572" endtime="20231013 19:50:46.572"/>
+</kw>
+<kw name="Capture Screenshot Of First Product">
+<status status="NOT RUN" starttime="20231013 19:50:46.572" endtime="20231013 19:50:46.572"/>
+</kw>
+<kw name="Drill Down To Product Page">
+<status status="NOT RUN" starttime="20231013 19:50:46.573" endtime="20231013 19:50:46.573"/>
+</kw>
+<kw name="Validate Content Matches Keyword">
+<arg>${SEARCH_KEYWORD}</arg>
+<status status="NOT RUN" starttime="20231013 19:50:46.575" endtime="20231013 19:50:46.576"/>
+</kw>
+<doc>Test the search feature from the main page using keyword "ps5".</doc>
+<tag>High</tag>
+<status status="FAIL" starttime="20231013 19:50:45.595" endtime="20231013 19:50:46.576">Element with locator 'id:search-input' not found.</status>
+</test>
+<test id="s1-t3" name="TC_UI_3 Verify Link Lisää Koriin Exists On Product Page" line="30">
+<kw name="Navigate To Main Page" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>http://jimms.fi</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20231013 19:50:46.578" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231013 19:50:46.578" endtime="20231013 19:50:47.038"/>
+</kw>
+<status status="PASS" starttime="20231013 19:50:46.578" endtime="20231013 19:50:47.038"/>
+</kw>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<arg>${ADD_TO_CART_LINK_TEXT}</arg>
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<msg timestamp="20231013 19:50:47.352" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231013 19:50:47.353" level="FAIL">Page should have contained link 'Lisää koriin' but did not.</msg>
+<status status="FAIL" starttime="20231013 19:50:47.038" endtime="20231013 19:50:47.381"/>
+</kw>
+<doc>Verify the existence of the "Lisää koriin" link on the product page.</doc>
+<tag>High</tag>
+<status status="FAIL" starttime="20231013 19:50:46.578" endtime="20231013 19:50:47.381">Page should have contained link 'Lisää koriin' but did not.</status>
+</test>
+<test id="s1-t4" name="TC_UI_4 Capture Screenshot Of Link Lisää Koriin Icon" line="37">
+<kw name="Navigate To Main Page" type="SETUP">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>http://jimms.fi</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20231013 19:50:47.384" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231013 19:50:47.384" endtime="20231013 19:50:47.858"/>
+</kw>
+<status status="PASS" starttime="20231013 19:50:47.384" endtime="20231013 19:50:47.858"/>
+</kw>
+<kw name="Capture Screenshot">
+<arg>Lisaa_koriin_icon.png</arg>
+<msg timestamp="20231013 19:50:47.860" level="FAIL">No keyword with name 'Capture Screenshot' found. Did you mean:
+    SeleniumLibrary.Capture Page Screenshot</msg>
+<status status="FAIL" starttime="20231013 19:50:47.860" endtime="20231013 19:50:47.861"/>
+</kw>
+<doc>Capture a screenshot of the icon related to the "Lisää koriin" link.</doc>
+<tag>Medium</tag>
+<status status="FAIL" starttime="20231013 19:50:47.383" endtime="20231013 19:50:47.861">No keyword with name 'Capture Screenshot' found. Did you mean:
+    SeleniumLibrary.Capture Page Screenshot</status>
+</test>
+<test id="s1-t5" name="TC_UI_5 Add Product To Shopping Cart" line="44">
+<doc>Add a product to the shopping cart.</doc>
+<tag>High</tag>
+<status status="FAIL" starttime="20231013 19:50:47.862" endtime="20231013 19:50:47.864">Test cannot be empty.</status>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231013 19:50:47.864" endtime="20231013 19:50:49.957"/>
+</kw>
+<status status="FAIL" starttime="20231013 19:50:41.675" endtime="20231013 19:50:49.957"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="5" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="3" skip="0">High</stat>
+<stat pass="0" fail="2" skip="0">Medium</stat>
+</tag>
+<suite>
+<stat pass="0" fail="5" skip="0" id="s1" name="Testingjimmy">Testingjimmy</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
