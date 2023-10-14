@@ -77,6 +77,8 @@ TC_UI_2 Verify Product Search And Details
     [Setup]  Navigate To Main Page
     Search For Product, Open First Result And Check Page  ps5  ps5
 
+
+
 ############################
 # Extra 5 Test Cases:
     # Verify Product Listings on Category Page
