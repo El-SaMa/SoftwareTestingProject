@@ -78,6 +78,19 @@ TC_UI_2 Verify Product Search And Details
     Search For Product, Open First Result And Check Page  ps5  ps5
 
 
+TC_UI_3 Find link "Lisää koriin" from product page
+    
+    Go To    https://www.jimms.fi/fi/Product/Search?q=ps5
+    Page Should Contain Link    /fi/ShoppingCart/AddItem/196297
+
+TC_UI_4 Find icon related to link "Lisää koriin"
+    
+    Go To    https://www.jimms.fi/fi/Product/Search?q=ps5
+    ${link_element}=    Get Element    //a[@title="Lisää koriin"]
+    ${icon_element}=    Get Element Attribute    xpath=${link_element}    @class="material-icon"
+
+    Element Should Be Visible    ${icon_element}
+
 
 ############################
 # Extra 5 Test Cases:
