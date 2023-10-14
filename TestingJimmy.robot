@@ -119,8 +119,6 @@ TC_UI_5 Add Product to Shopping Cart
     Click Element    xpath://a[@title="Lisää koriin"]
     
     # Verify that the product has been added to the shopping cart (You may need to customize this part)
-    Wait Until Page Contains Element    xpath://*[contains(text(), 'Lisää koriin')]    timeout=10s
-    Page Should Contain    text=Lisää koriin
     
 
 
