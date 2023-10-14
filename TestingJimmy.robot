@@ -39,16 +39,19 @@ Search For Product
     Input Text  id:searchinput  ${product_name}
     Press Keys  id:searchinput  ENTER
     Sleep  1s
+
 Take a Screenshot Of First Product
     ${first_product_link}=  Get WebElement  xpath://html/body/main/div[2]/div/div[2]/div[5]/div/div[1]
     Capture Element Screenshot  ${first_product_link}  filename=first_product.png
 
 Open First Product
-    ${first_product_link}=  Get WebElement  xpath://html/body/main/div[2]/div/div[2]/div[5]/div/div[1]
+    ${first_product_link}=  Get WebElement  xpath://html/body/main/div[2]/div/div[2]/div[5]/div/div[1]/product-box/div[2]/div[2]/h5/a/span
     Click Element  ${first_product_link}
+    Sleep  2s  # Add a delay to ensure the product page loads
 
 Check Product Page for ps5
-    Page Should Contain  ps5
+    ${keyword}=  Get Text  id:searchinput
+    Page Should Contain    text=${keyword}
 
 
 
@@ -64,6 +67,20 @@ Check Product Page for ps5
 # Can you find icon related to link "Lisää koriin". Robot takes element screenshot from icon.
 # Robot adds product into shopping cart
 *** Test Cases ***
+TC_UI_1 Verify All Product Categories Have a Landing Page
+    [Tags]    Medium
+    [Documentation]    Verify if all product categories have a "landing page".
+    [Setup]    Navigate To Main Page
+
+    ${category_count}=  Get Element Count  xpath://*[@id="sitemegamenu"]/nav/ul/li/a     #Count the number of category links.
+    FOR  ${index}  IN RANGE  1  ${category_count}     #Loop through each category, ignoring 'Kampanjat'.
+        ${category_xpath}=  Set Variable  xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]
+        ${category_text}=  Get Text  ${category_xpath}
+        Run Keyword If  '${category_text}' == 'Kampanjat'  Continue For Loop
+        Verify Category Landing Page  ${category_xpath}
+    END
+
+
 TC_UI_2 Verify Product Search And Details
     [Tags]  Medium
     [Documentation]  Test search feature from the main page (search keyword is: ps5).
@@ -76,26 +93,36 @@ TC_UI_2 Verify Product Search And Details
     Take a Screen Shot Of First Product
     Sleep    1s
     Open First Product
-    sleep    1s
+    sleep    2s
     Check Product Page for ps5
 
 
 TC_UI_3 Find link "Lisää koriin" from product page
     
-    Go To    https://www.jimms.fi/fi/Product/Search?q=ps5
-    Sleep    1s
-    Open First Product
-    Sleep    1s
     Page Should Contain Link    //a[@title="Lisää koriin"]
 
+*** Test Cases ***
 TC_UI_4 Find icon related to link "Lisää koriin"
     [Tags]  Medium
     [Documentation]  Find the icon related to the "Lisää koriin" link on the product page.
-    [Setup]  Go To  https://www.jimms.fi/fi/Product/Search?q=ps5
-    # Open the first product
-    Open First Product
-    Sleep    1s
-  
+
+    # Find and capture a screenshot of the icon associated with "Lisää koriin"
+    ${icon_element}=  Get WebElement  xpath://*[@id="product-cta-box"]/div/div[2]/div[2]/addto-cart-wrapper/div/a
+
+    Capture Element Screenshot  ${icon_element}  filename=icon.png
+
+TC_UI_5 Add Product to Shopping Cart
+    [Tags]    Medium
+    [Documentation]    Robot adds a product into the shopping cart.
+    
+    # Click the "Lisää koriin" button to add the product to the shopping cart
+    Click Element    xpath://a[@title="Lisää koriin"]
+    
+    # Verify that the product has been added to the shopping cart (You may need to customize this part)
+    Wait Until Page Contains Element    xpath://*[contains(text(), 'Lisää koriin')]    timeout=10s
+    Page Should Contain    text=Lisää koriin
+    
+
 
 
 ############################
