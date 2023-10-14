@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20231014 07:30:35.890" rpa="false" schemaversion="4">
-<suite id="s1" name="Testingjimmy" source="c:\Users\Se7mas\Documents\GitHub\SoftwareTestingProject\testingjimmy.robot">
+<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20231014 14:53:42.137" rpa="false" schemaversion="4">
+<suite id="s1" name="Testingjimmy" source="c:\Users\ELSAMA\Documents\github\SoftwareTestingProject\testingjimmy.robot">
 <kw name="Setup Browser And Maximize" type="SETUP">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20231014 07:30:36.198" level="INFO">Opening browser 'chrome' to base url 'http://jimms.fi'.</msg>
-<status status="PASS" starttime="20231014 07:30:36.197" endtime="20231014 07:30:40.999"/>
+<msg timestamp="20231014 14:53:42.325" level="INFO">Opening browser 'chrome' to base url 'http://jimms.fi'.</msg>
+<status status="PASS" starttime="20231014 14:53:42.325" endtime="20231014 14:53:45.187"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20231014 07:30:40.999" endtime="20231014 07:30:41.231"/>
+<status status="PASS" starttime="20231014 14:53:45.188" endtime="20231014 14:53:45.398"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:36.185" endtime="20231014 07:30:41.232"/>
+<status status="PASS" starttime="20231014 14:53:42.311" endtime="20231014 14:53:45.398"/>
 </kw>
-<test id="s1-t1" name="TC_UI_1 Verify All Product Categories Have a Landing Page" line="69">
+<test id="s1-t1" name="TC_UI_1 Verify All Product Categories Have a Landing Page" line="62">
 <kw name="Navigate To Main Page" type="SETUP">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:41.234" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:41.234" endtime="20231014 07:30:41.819"/>
+<msg timestamp="20231014 14:53:45.401" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:45.400" endtime="20231014 14:53:45.987"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:41.233" endtime="20231014 07:30:41.820"/>
+<status status="PASS" starttime="20231014 14:53:45.400" endtime="20231014 14:53:45.989"/>
 </kw>
 <kw name="Get Element Count" library="SeleniumLibrary">
 <var>${category_count}</var>
 <arg>xpath://*[@id="sitemegamenu"]/nav/ul/li/a</arg>
 <doc>Returns the number of elements matching ``locator``.</doc>
-<msg timestamp="20231014 07:30:41.835" level="INFO">${category_count} = 10</msg>
-<status status="PASS" starttime="20231014 07:30:41.820" endtime="20231014 07:30:41.835"/>
+<msg timestamp="20231014 14:53:46.002" level="INFO">${category_count} = 10</msg>
+<status status="PASS" starttime="20231014 14:53:45.989" endtime="20231014 14:53:46.002"/>
 </kw>
 <for flavor="IN RANGE">
 <var>${index}</var>
@@ -42,52 +42,52 @@
 <var>${category_xpath}</var>
 <arg>xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:41.837" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[1]</msg>
-<status status="PASS" starttime="20231014 07:30:41.836" endtime="20231014 07:30:41.837"/>
+<msg timestamp="20231014 14:53:46.003" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[1]</msg>
+<status status="PASS" starttime="20231014 14:53:46.003" endtime="20231014 14:53:46.003"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${category_text}</var>
 <arg>${category_xpath}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:41.856" level="INFO">${category_text} = Tietokoneet</msg>
-<status status="PASS" starttime="20231014 07:30:41.837" endtime="20231014 07:30:41.856"/>
+<msg timestamp="20231014 14:53:46.024" level="INFO">${category_text} = Tietokoneet</msg>
+<status status="PASS" starttime="20231014 14:53:46.003" endtime="20231014 14:53:46.024"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${category_text}' == 'Kampanjat'</arg>
 <arg>Continue For Loop</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231014 07:30:41.856" endtime="20231014 07:30:41.856"/>
+<status status="PASS" starttime="20231014 14:53:46.024" endtime="20231014 14:53:46.024"/>
 </kw>
 <kw name="Verify Category Landing Page">
 <arg>${category_xpath}</arg>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20231014 07:30:41.856" endtime="20231014 07:30:42.151"/>
+<status status="PASS" starttime="20231014 14:53:46.024" endtime="20231014 14:53:46.306"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:42.151" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[1]'.</msg>
-<status status="PASS" starttime="20231014 07:30:42.151" endtime="20231014 07:30:42.757"/>
+<msg timestamp="20231014 14:53:46.306" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[1]'.</msg>
+<status status="PASS" starttime="20231014 14:53:46.306" endtime="20231014 14:53:46.957"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>tag:h1</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:42.757" endtime="20231014 07:30:42.768"/>
+<status status="PASS" starttime="20231014 14:53:46.959" endtime="20231014 14:53:46.963"/>
 </kw>
 <kw name="Navigate To Main Page">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:42.768" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:42.768" endtime="20231014 07:30:43.317"/>
+<msg timestamp="20231014 14:53:46.963" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:46.963" endtime="20231014 14:53:47.390"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:42.768" endtime="20231014 07:30:43.317"/>
+<status status="PASS" starttime="20231014 14:53:46.963" endtime="20231014 14:53:47.390"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:41.856" endtime="20231014 07:30:43.317"/>
+<status status="PASS" starttime="20231014 14:53:46.024" endtime="20231014 14:53:47.390"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:41.836" endtime="20231014 07:30:43.317"/>
+<status status="PASS" starttime="20231014 14:53:46.002" endtime="20231014 14:53:47.390"/>
 </iter>
 <iter>
 <var name="${index}">2</var>
@@ -95,52 +95,52 @@
 <var>${category_xpath}</var>
 <arg>xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:43.318" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[2]</msg>
-<status status="PASS" starttime="20231014 07:30:43.318" endtime="20231014 07:30:43.318"/>
+<msg timestamp="20231014 14:53:47.390" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[2]</msg>
+<status status="PASS" starttime="20231014 14:53:47.390" endtime="20231014 14:53:47.390"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${category_text}</var>
 <arg>${category_xpath}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:43.337" level="INFO">${category_text} = Komponentit</msg>
-<status status="PASS" starttime="20231014 07:30:43.318" endtime="20231014 07:30:43.337"/>
+<msg timestamp="20231014 14:53:47.415" level="INFO">${category_text} = Komponentit</msg>
+<status status="PASS" starttime="20231014 14:53:47.390" endtime="20231014 14:53:47.415"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${category_text}' == 'Kampanjat'</arg>
 <arg>Continue For Loop</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231014 07:30:43.337" endtime="20231014 07:30:43.338"/>
+<status status="PASS" starttime="20231014 14:53:47.415" endtime="20231014 14:53:47.415"/>
 </kw>
 <kw name="Verify Category Landing Page">
 <arg>${category_xpath}</arg>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20231014 07:30:43.338" endtime="20231014 07:30:43.630"/>
+<status status="PASS" starttime="20231014 14:53:47.415" endtime="20231014 14:53:47.693"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:43.630" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[2]'.</msg>
-<status status="PASS" starttime="20231014 07:30:43.630" endtime="20231014 07:30:44.183"/>
+<msg timestamp="20231014 14:53:47.694" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[2]'.</msg>
+<status status="PASS" starttime="20231014 14:53:47.694" endtime="20231014 14:53:48.206"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>tag:h1</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:44.183" endtime="20231014 07:30:44.183"/>
+<status status="PASS" starttime="20231014 14:53:48.206" endtime="20231014 14:53:48.206"/>
 </kw>
 <kw name="Navigate To Main Page">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:44.183" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:44.183" endtime="20231014 07:30:44.638"/>
+<msg timestamp="20231014 14:53:48.206" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:48.206" endtime="20231014 14:53:48.609"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:44.183" endtime="20231014 07:30:44.638"/>
+<status status="PASS" starttime="20231014 14:53:48.206" endtime="20231014 14:53:48.609"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:43.338" endtime="20231014 07:30:44.638"/>
+<status status="PASS" starttime="20231014 14:53:47.415" endtime="20231014 14:53:48.609"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:43.318" endtime="20231014 07:30:44.639"/>
+<status status="PASS" starttime="20231014 14:53:47.390" endtime="20231014 14:53:48.609"/>
 </iter>
 <iter>
 <var name="${index}">3</var>
@@ -148,52 +148,52 @@
 <var>${category_xpath}</var>
 <arg>xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:44.639" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[3]</msg>
-<status status="PASS" starttime="20231014 07:30:44.639" endtime="20231014 07:30:44.639"/>
+<msg timestamp="20231014 14:53:48.609" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[3]</msg>
+<status status="PASS" starttime="20231014 14:53:48.609" endtime="20231014 14:53:48.609"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${category_text}</var>
 <arg>${category_xpath}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:44.662" level="INFO">${category_text} = Oheislaitteet</msg>
-<status status="PASS" starttime="20231014 07:30:44.639" endtime="20231014 07:30:44.662"/>
+<msg timestamp="20231014 14:53:48.630" level="INFO">${category_text} = Oheislaitteet</msg>
+<status status="PASS" starttime="20231014 14:53:48.609" endtime="20231014 14:53:48.630"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${category_text}' == 'Kampanjat'</arg>
 <arg>Continue For Loop</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231014 07:30:44.663" endtime="20231014 07:30:44.663"/>
+<status status="PASS" starttime="20231014 14:53:48.631" endtime="20231014 14:53:48.631"/>
 </kw>
 <kw name="Verify Category Landing Page">
 <arg>${category_xpath}</arg>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20231014 07:30:44.664" endtime="20231014 07:30:44.933"/>
+<status status="PASS" starttime="20231014 14:53:48.631" endtime="20231014 14:53:48.924"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:44.933" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[3]'.</msg>
-<status status="PASS" starttime="20231014 07:30:44.933" endtime="20231014 07:30:45.557"/>
+<msg timestamp="20231014 14:53:48.925" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[3]'.</msg>
+<status status="PASS" starttime="20231014 14:53:48.924" endtime="20231014 14:53:49.622"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>tag:h1</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:45.557" endtime="20231014 07:30:45.564"/>
+<status status="PASS" starttime="20231014 14:53:49.622" endtime="20231014 14:53:49.630"/>
 </kw>
 <kw name="Navigate To Main Page">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:45.565" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:45.565" endtime="20231014 07:30:46.003"/>
+<msg timestamp="20231014 14:53:49.631" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:49.631" endtime="20231014 14:53:50.028"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:45.564" endtime="20231014 07:30:46.004"/>
+<status status="PASS" starttime="20231014 14:53:49.631" endtime="20231014 14:53:50.036"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:44.663" endtime="20231014 07:30:46.004"/>
+<status status="PASS" starttime="20231014 14:53:48.631" endtime="20231014 14:53:50.036"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:44.639" endtime="20231014 07:30:46.004"/>
+<status status="PASS" starttime="20231014 14:53:48.609" endtime="20231014 14:53:50.036"/>
 </iter>
 <iter>
 <var name="${index}">4</var>
@@ -201,52 +201,52 @@
 <var>${category_xpath}</var>
 <arg>xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:46.005" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[4]</msg>
-<status status="PASS" starttime="20231014 07:30:46.004" endtime="20231014 07:30:46.005"/>
+<msg timestamp="20231014 14:53:50.036" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[4]</msg>
+<status status="PASS" starttime="20231014 14:53:50.036" endtime="20231014 14:53:50.036"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${category_text}</var>
 <arg>${category_xpath}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:46.024" level="INFO">${category_text} = Pelaaminen</msg>
-<status status="PASS" starttime="20231014 07:30:46.005" endtime="20231014 07:30:46.024"/>
+<msg timestamp="20231014 14:53:50.057" level="INFO">${category_text} = Pelaaminen</msg>
+<status status="PASS" starttime="20231014 14:53:50.036" endtime="20231014 14:53:50.057"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${category_text}' == 'Kampanjat'</arg>
 <arg>Continue For Loop</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231014 07:30:46.024" endtime="20231014 07:30:46.025"/>
+<status status="PASS" starttime="20231014 14:53:50.058" endtime="20231014 14:53:50.058"/>
 </kw>
 <kw name="Verify Category Landing Page">
 <arg>${category_xpath}</arg>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20231014 07:30:46.025" endtime="20231014 07:30:46.319"/>
+<status status="PASS" starttime="20231014 14:53:50.058" endtime="20231014 14:53:50.329"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:46.319" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[4]'.</msg>
-<status status="PASS" starttime="20231014 07:30:46.319" endtime="20231014 07:30:46.901"/>
+<msg timestamp="20231014 14:53:50.331" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[4]'.</msg>
+<status status="PASS" starttime="20231014 14:53:50.330" endtime="20231014 14:53:50.784"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>tag:h1</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:46.901" endtime="20231014 07:30:46.901"/>
+<status status="PASS" starttime="20231014 14:53:50.784" endtime="20231014 14:53:50.796"/>
 </kw>
 <kw name="Navigate To Main Page">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:46.901" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:46.901" endtime="20231014 07:30:47.360"/>
+<msg timestamp="20231014 14:53:50.796" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:50.796" endtime="20231014 14:53:51.217"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:46.901" endtime="20231014 07:30:47.360"/>
+<status status="PASS" starttime="20231014 14:53:50.796" endtime="20231014 14:53:51.218"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:46.025" endtime="20231014 07:30:47.360"/>
+<status status="PASS" starttime="20231014 14:53:50.058" endtime="20231014 14:53:51.218"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:46.004" endtime="20231014 07:30:47.360"/>
+<status status="PASS" starttime="20231014 14:53:50.036" endtime="20231014 14:53:51.218"/>
 </iter>
 <iter>
 <var name="${index}">5</var>
@@ -254,52 +254,52 @@
 <var>${category_xpath}</var>
 <arg>xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:47.361" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[5]</msg>
-<status status="PASS" starttime="20231014 07:30:47.361" endtime="20231014 07:30:47.361"/>
+<msg timestamp="20231014 14:53:51.218" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[5]</msg>
+<status status="PASS" starttime="20231014 14:53:51.218" endtime="20231014 14:53:51.218"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${category_text}</var>
 <arg>${category_xpath}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:47.385" level="INFO">${category_text} = Verkkotuotteet</msg>
-<status status="PASS" starttime="20231014 07:30:47.361" endtime="20231014 07:30:47.385"/>
+<msg timestamp="20231014 14:53:51.245" level="INFO">${category_text} = Verkkotuotteet</msg>
+<status status="PASS" starttime="20231014 14:53:51.218" endtime="20231014 14:53:51.245"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${category_text}' == 'Kampanjat'</arg>
 <arg>Continue For Loop</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231014 07:30:47.385" endtime="20231014 07:30:47.385"/>
+<status status="PASS" starttime="20231014 14:53:51.245" endtime="20231014 14:53:51.245"/>
 </kw>
 <kw name="Verify Category Landing Page">
 <arg>${category_xpath}</arg>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20231014 07:30:47.386" endtime="20231014 07:30:47.666"/>
+<status status="PASS" starttime="20231014 14:53:51.245" endtime="20231014 14:53:51.547"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:47.666" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[5]'.</msg>
-<status status="PASS" starttime="20231014 07:30:47.666" endtime="20231014 07:30:48.219"/>
+<msg timestamp="20231014 14:53:51.548" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[5]'.</msg>
+<status status="PASS" starttime="20231014 14:53:51.547" endtime="20231014 14:53:51.981"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>tag:h1</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:48.219" endtime="20231014 07:30:48.225"/>
+<status status="PASS" starttime="20231014 14:53:51.981" endtime="20231014 14:53:51.995"/>
 </kw>
 <kw name="Navigate To Main Page">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:48.226" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:48.226" endtime="20231014 07:30:49.238"/>
+<msg timestamp="20231014 14:53:51.995" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:51.995" endtime="20231014 14:53:52.396"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:48.225" endtime="20231014 07:30:49.239"/>
+<status status="PASS" starttime="20231014 14:53:51.995" endtime="20231014 14:53:52.396"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:47.385" endtime="20231014 07:30:49.239"/>
+<status status="PASS" starttime="20231014 14:53:51.245" endtime="20231014 14:53:52.396"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:47.361" endtime="20231014 07:30:49.239"/>
+<status status="PASS" starttime="20231014 14:53:51.218" endtime="20231014 14:53:52.396"/>
 </iter>
 <iter>
 <var name="${index}">6</var>
@@ -307,52 +307,52 @@
 <var>${category_xpath}</var>
 <arg>xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:49.239" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[6]</msg>
-<status status="PASS" starttime="20231014 07:30:49.239" endtime="20231014 07:30:49.239"/>
+<msg timestamp="20231014 14:53:52.396" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[6]</msg>
+<status status="PASS" starttime="20231014 14:53:52.396" endtime="20231014 14:53:52.396"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${category_text}</var>
 <arg>${category_xpath}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:49.252" level="INFO">${category_text} = Tarvikkeet</msg>
-<status status="PASS" starttime="20231014 07:30:49.239" endtime="20231014 07:30:49.252"/>
+<msg timestamp="20231014 14:53:52.424" level="INFO">${category_text} = Tarvikkeet</msg>
+<status status="PASS" starttime="20231014 14:53:52.396" endtime="20231014 14:53:52.424"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${category_text}' == 'Kampanjat'</arg>
 <arg>Continue For Loop</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231014 07:30:49.252" endtime="20231014 07:30:49.252"/>
+<status status="PASS" starttime="20231014 14:53:52.424" endtime="20231014 14:53:52.427"/>
 </kw>
 <kw name="Verify Category Landing Page">
 <arg>${category_xpath}</arg>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20231014 07:30:49.252" endtime="20231014 07:30:49.548"/>
+<status status="PASS" starttime="20231014 14:53:52.428" endtime="20231014 14:53:52.714"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:49.549" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[6]'.</msg>
-<status status="PASS" starttime="20231014 07:30:49.548" endtime="20231014 07:30:50.131"/>
+<msg timestamp="20231014 14:53:52.715" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[6]'.</msg>
+<status status="PASS" starttime="20231014 14:53:52.715" endtime="20231014 14:53:53.211"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>tag:h1</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:50.131" endtime="20231014 07:30:50.134"/>
+<status status="PASS" starttime="20231014 14:53:53.212" endtime="20231014 14:53:53.220"/>
 </kw>
 <kw name="Navigate To Main Page">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:50.134" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:50.134" endtime="20231014 07:30:50.590"/>
+<msg timestamp="20231014 14:53:53.221" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:53.221" endtime="20231014 14:53:53.643"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:50.134" endtime="20231014 07:30:50.590"/>
+<status status="PASS" starttime="20231014 14:53:53.220" endtime="20231014 14:53:53.644"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:49.252" endtime="20231014 07:30:50.590"/>
+<status status="PASS" starttime="20231014 14:53:52.427" endtime="20231014 14:53:53.644"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:49.239" endtime="20231014 07:30:50.591"/>
+<status status="PASS" starttime="20231014 14:53:52.396" endtime="20231014 14:53:53.644"/>
 </iter>
 <iter>
 <var name="${index}">7</var>
@@ -360,52 +360,52 @@
 <var>${category_xpath}</var>
 <arg>xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:50.591" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[7]</msg>
-<status status="PASS" starttime="20231014 07:30:50.591" endtime="20231014 07:30:50.591"/>
+<msg timestamp="20231014 14:53:53.645" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[7]</msg>
+<status status="PASS" starttime="20231014 14:53:53.644" endtime="20231014 14:53:53.645"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${category_text}</var>
 <arg>${category_xpath}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:50.613" level="INFO">${category_text} = Erikoistuotteet</msg>
-<status status="PASS" starttime="20231014 07:30:50.591" endtime="20231014 07:30:50.613"/>
+<msg timestamp="20231014 14:53:53.669" level="INFO">${category_text} = Erikoistuotteet</msg>
+<status status="PASS" starttime="20231014 14:53:53.645" endtime="20231014 14:53:53.670"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${category_text}' == 'Kampanjat'</arg>
 <arg>Continue For Loop</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231014 07:30:50.614" endtime="20231014 07:30:50.614"/>
+<status status="PASS" starttime="20231014 14:53:53.670" endtime="20231014 14:53:53.670"/>
 </kw>
 <kw name="Verify Category Landing Page">
 <arg>${category_xpath}</arg>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20231014 07:30:50.615" endtime="20231014 07:30:50.883"/>
+<status status="PASS" starttime="20231014 14:53:53.671" endtime="20231014 14:53:53.950"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:50.883" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[7]'.</msg>
-<status status="PASS" starttime="20231014 07:30:50.883" endtime="20231014 07:30:51.418"/>
+<msg timestamp="20231014 14:53:53.950" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[7]'.</msg>
+<status status="PASS" starttime="20231014 14:53:53.950" endtime="20231014 14:53:54.434"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>tag:h1</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:51.419" endtime="20231014 07:30:51.426"/>
+<status status="PASS" starttime="20231014 14:53:54.434" endtime="20231014 14:53:54.440"/>
 </kw>
 <kw name="Navigate To Main Page">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:51.426" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:51.426" endtime="20231014 07:30:51.877"/>
+<msg timestamp="20231014 14:53:54.440" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:54.440" endtime="20231014 14:53:54.861"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:51.426" endtime="20231014 07:30:51.877"/>
+<status status="PASS" starttime="20231014 14:53:54.440" endtime="20231014 14:53:54.861"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:50.614" endtime="20231014 07:30:51.877"/>
+<status status="PASS" starttime="20231014 14:53:53.670" endtime="20231014 14:53:54.861"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:50.591" endtime="20231014 07:30:51.878"/>
+<status status="PASS" starttime="20231014 14:53:53.644" endtime="20231014 14:53:54.861"/>
 </iter>
 <iter>
 <var name="${index}">8</var>
@@ -413,52 +413,52 @@
 <var>${category_xpath}</var>
 <arg>xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:51.878" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[8]</msg>
-<status status="PASS" starttime="20231014 07:30:51.878" endtime="20231014 07:30:51.878"/>
+<msg timestamp="20231014 14:53:54.863" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[8]</msg>
+<status status="PASS" starttime="20231014 14:53:54.862" endtime="20231014 14:53:54.863"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${category_text}</var>
 <arg>${category_xpath}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:51.898" level="INFO">${category_text} = Ohjelmistot</msg>
-<status status="PASS" starttime="20231014 07:30:51.878" endtime="20231014 07:30:51.900"/>
+<msg timestamp="20231014 14:53:54.887" level="INFO">${category_text} = Ohjelmistot</msg>
+<status status="PASS" starttime="20231014 14:53:54.863" endtime="20231014 14:53:54.888"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${category_text}' == 'Kampanjat'</arg>
 <arg>Continue For Loop</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231014 07:30:51.900" endtime="20231014 07:30:51.900"/>
+<status status="PASS" starttime="20231014 14:53:54.888" endtime="20231014 14:53:54.888"/>
 </kw>
 <kw name="Verify Category Landing Page">
 <arg>${category_xpath}</arg>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20231014 07:30:51.900" endtime="20231014 07:30:52.169"/>
+<status status="PASS" starttime="20231014 14:53:54.889" endtime="20231014 14:53:55.168"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:52.169" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[8]'.</msg>
-<status status="PASS" starttime="20231014 07:30:52.169" endtime="20231014 07:30:52.776"/>
+<msg timestamp="20231014 14:53:55.168" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[8]'.</msg>
+<status status="PASS" starttime="20231014 14:53:55.168" endtime="20231014 14:53:55.686"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>tag:h1</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:52.777" endtime="20231014 07:30:52.786"/>
+<status status="PASS" starttime="20231014 14:53:55.686" endtime="20231014 14:53:55.703"/>
 </kw>
 <kw name="Navigate To Main Page">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:52.787" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:52.786" endtime="20231014 07:30:53.215"/>
+<msg timestamp="20231014 14:53:55.706" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:55.706" endtime="20231014 14:53:56.104"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:52.786" endtime="20231014 07:30:53.215"/>
+<status status="PASS" starttime="20231014 14:53:55.705" endtime="20231014 14:53:56.105"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:51.900" endtime="20231014 07:30:53.215"/>
+<status status="PASS" starttime="20231014 14:53:54.888" endtime="20231014 14:53:56.105"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:51.878" endtime="20231014 07:30:53.215"/>
+<status status="PASS" starttime="20231014 14:53:54.862" endtime="20231014 14:53:56.105"/>
 </iter>
 <iter>
 <var name="${index}">9</var>
@@ -466,136 +466,148 @@
 <var>${category_xpath}</var>
 <arg>xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:53.215" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[9]</msg>
-<status status="PASS" starttime="20231014 07:30:53.215" endtime="20231014 07:30:53.215"/>
+<msg timestamp="20231014 14:53:56.106" level="INFO">${category_xpath} = xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[9]</msg>
+<status status="PASS" starttime="20231014 14:53:56.105" endtime="20231014 14:53:56.106"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${category_text}</var>
 <arg>${category_xpath}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:53.234" level="INFO">${category_text} = Palvelut</msg>
-<status status="PASS" starttime="20231014 07:30:53.215" endtime="20231014 07:30:53.234"/>
+<msg timestamp="20231014 14:53:56.129" level="INFO">${category_text} = Palvelut</msg>
+<status status="PASS" starttime="20231014 14:53:56.106" endtime="20231014 14:53:56.129"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${category_text}' == 'Kampanjat'</arg>
 <arg>Continue For Loop</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20231014 07:30:53.234" endtime="20231014 07:30:53.234"/>
+<status status="PASS" starttime="20231014 14:53:56.130" endtime="20231014 14:53:56.130"/>
 </kw>
 <kw name="Verify Category Landing Page">
 <arg>${category_xpath}</arg>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20231014 07:30:53.248" endtime="20231014 07:30:53.533"/>
+<status status="PASS" starttime="20231014 14:53:56.130" endtime="20231014 14:53:56.404"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${category_xpath}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:53.533" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[9]'.</msg>
-<status status="PASS" starttime="20231014 07:30:53.533" endtime="20231014 07:30:54.043"/>
+<msg timestamp="20231014 14:53:56.405" level="INFO">Clicking element 'xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[9]'.</msg>
+<status status="PASS" starttime="20231014 14:53:56.405" endtime="20231014 14:53:56.915"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>tag:h1</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:54.043" endtime="20231014 07:30:54.050"/>
+<status status="PASS" starttime="20231014 14:53:56.916" endtime="20231014 14:53:56.925"/>
 </kw>
 <kw name="Navigate To Main Page">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:54.051" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:54.050" endtime="20231014 07:30:54.504"/>
+<msg timestamp="20231014 14:53:56.926" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:56.926" endtime="20231014 14:53:57.413"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:54.050" endtime="20231014 07:30:54.504"/>
+<status status="PASS" starttime="20231014 14:53:56.925" endtime="20231014 14:53:57.413"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:53.234" endtime="20231014 07:30:54.504"/>
+<status status="PASS" starttime="20231014 14:53:56.130" endtime="20231014 14:53:57.413"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:53.215" endtime="20231014 07:30:54.504"/>
+<status status="PASS" starttime="20231014 14:53:56.105" endtime="20231014 14:53:57.413"/>
 </iter>
-<status status="PASS" starttime="20231014 07:30:41.836" endtime="20231014 07:30:54.504"/>
+<status status="PASS" starttime="20231014 14:53:46.002" endtime="20231014 14:53:57.413"/>
 </for>
 <doc>Verify if all product categories have a "landing page".</doc>
 <tag>Medium</tag>
-<status status="PASS" starttime="20231014 07:30:41.232" endtime="20231014 07:30:54.505"/>
+<status status="PASS" starttime="20231014 14:53:45.398" endtime="20231014 14:53:57.414"/>
 </test>
-<test id="s1-t2" name="TC_UI_2 Verify Search Feature And Product Details" line="82">
+<test id="s1-t2" name="TC_UI_2 Verify Product Search And Details" line="74">
 <kw name="Navigate To Main Page" type="SETUP">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:54.507" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:54.506" endtime="20231014 07:30:54.996"/>
+<msg timestamp="20231014 14:53:57.417" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:53:57.417" endtime="20231014 14:53:57.821"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:54.506" endtime="20231014 07:30:54.996"/>
+<status status="PASS" starttime="20231014 14:53:57.417" endtime="20231014 14:53:57.821"/>
 </kw>
-<kw name="Search Product">
+<kw name="Search For Product, Open First Result And Check Page">
+<arg>ps5</arg>
 <arg>ps5</arg>
 <kw name="Input Text" library="SeleniumLibrary">
-<arg>//*[@id="searchinput"]</arg>
-<arg>${search_keyword}</arg>
+<arg>id:searchinput</arg>
+<arg>${product_name}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:54.998" level="INFO">Typing text 'ps5' into text field '//*[@id="searchinput"]'.</msg>
-<status status="PASS" starttime="20231014 07:30:54.998" endtime="20231014 07:30:55.070"/>
+<msg timestamp="20231014 14:53:57.822" level="INFO">Typing text 'ps5' into text field 'id:searchinput'.</msg>
+<status status="PASS" starttime="20231014 14:53:57.822" endtime="20231014 14:53:57.910"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>//*[@id="qps-search-button"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231014 07:30:55.070" level="INFO">Clicking element '//*[@id="qps-search-button"]'.</msg>
-<status status="PASS" starttime="20231014 07:30:55.070" endtime="20231014 07:30:55.167"/>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:searchinput</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20231014 14:53:57.910" level="INFO">Sending key(s) ('ENTER',) to id:searchinput element.</msg>
+<msg timestamp="20231014 14:53:58.199" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20231014 14:53:58.199" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20231014 14:53:57.910" endtime="20231014 14:53:58.908"/>
 </kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>${search_keyword}</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20231014 07:30:55.167" endtime="20231014 07:30:55.634"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231014 14:53:59.909" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231014 14:53:58.908" endtime="20231014 14:53:59.909"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:54.997" endtime="20231014 07:30:55.634"/>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${first_product_link}</var>
+<arg>xpath://html/body/main/div[2]/div/div[2]/div[5]/div/div[1]/product-box/div[2]</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20231014 14:53:59.925" level="INFO">${first_product_link} = &lt;selenium.webdriver.remote.webelement.WebElement (session="ea6fb85b2b6e9ad80e59dd5a5c72f4ad", element="65E60E16A3055BD0459B335C4C66FA6D_element_261")&gt;</msg>
+<status status="PASS" starttime="20231014 14:53:59.909" endtime="20231014 14:53:59.925"/>
 </kw>
-<kw name="Take Screenshot Of First Product">
-<kw name="Set Variable" library="BuiltIn">
-<var>${first_product_xpath}</var>
-<arg>//*[@id="productsearchpage"]/div[2]/div[5]/div/div[1]/product-box/div[2]</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20231014 07:30:55.634" level="INFO">${first_product_xpath} = //*[@id="productsearchpage"]/div[2]/div[5]/div/div[1]/product-box/div[2]</msg>
-<status status="PASS" starttime="20231014 07:30:55.634" endtime="20231014 07:30:55.634"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231014 14:54:00.925" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231014 14:53:59.925" endtime="20231014 14:54:00.925"/>
 </kw>
 <kw name="Capture Element Screenshot" library="SeleniumLibrary">
-<arg>${first_product_xpath}</arg>
-<arg>first_product_screenshot.png</arg>
+<arg>${first_product_link}</arg>
+<arg>filename=first_product.png</arg>
 <doc>Captures a screenshot from the element identified by ``locator`` and embeds it into log file.</doc>
-<msg timestamp="20231014 07:30:56.533" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg timestamp="20231014 07:30:56.533" level="FAIL">Element with locator '//*[@id="productsearchpage"]/div[2]/div[5]/div/div[1]/product-box/div[2]' not found.</msg>
-<status status="FAIL" starttime="20231014 07:30:55.634" endtime="20231014 07:30:56.533"/>
+<msg timestamp="20231014 14:54:01.033" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="first_product.png"&gt;&lt;img src="first_product.png" width="400px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231014 14:54:00.925" endtime="20231014 14:54:01.033"/>
 </kw>
-<status status="FAIL" starttime="20231014 07:30:55.634" endtime="20231014 07:30:56.548"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${first_product_link}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231014 14:54:01.033" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="ea6fb85b2b6e9ad80e59dd5a5c72f4ad", element="65E60E16A3055BD0459B335C4C66FA6D_element_261")&gt;'.</msg>
+<status status="PASS" starttime="20231014 14:54:01.033" endtime="20231014 14:54:01.087"/>
 </kw>
-<kw name="Navigate To First Product Page">
-<status status="NOT RUN" starttime="20231014 07:30:56.548" endtime="20231014 07:30:56.548"/>
-</kw>
-<kw name="Verify Keyword In Product Page">
+<kw name="Page Should Contain" library="SeleniumLibrary">
 <arg>ps5</arg>
-<status status="NOT RUN" starttime="20231014 07:30:56.548" endtime="20231014 07:30:56.549"/>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231014 14:54:01.123" level="INFO">Current page contains text 'ps5'.</msg>
+<status status="PASS" starttime="20231014 14:54:01.087" endtime="20231014 14:54:01.124"/>
 </kw>
-<doc>Use search feature with keyword "ps5", navigate to the first product's details and verify its contents.</doc>
+<status status="PASS" starttime="20231014 14:53:57.822" endtime="20231014 14:54:01.124"/>
+</kw>
+<doc>Test search feature from main page (search keyword is: ps5).</doc>
 <tag>Medium</tag>
-<status status="FAIL" starttime="20231014 07:30:54.505" endtime="20231014 07:30:56.549">Element with locator '//*[@id="productsearchpage"]/div[2]/div[5]/div/div[1]/product-box/div[2]' not found.</status>
+<status status="PASS" starttime="20231014 14:53:57.416" endtime="20231014 14:54:01.125"/>
 </test>
-<test id="s1-t3" name="TC_UI_6 Verify Product Listings on Category Page" line="99">
+<test id="s1-t3" name="TC_UI_6 Verify Product Listings on Category Page" line="88">
 <kw name="Navigate To Main Page" type="SETUP">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>http://jimms.fi</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231014 07:30:56.552" level="INFO">Opening url 'http://jimms.fi'</msg>
-<status status="PASS" starttime="20231014 07:30:56.551" endtime="20231014 07:30:57.098"/>
+<msg timestamp="20231014 14:54:01.128" level="INFO">Opening url 'http://jimms.fi'</msg>
+<status status="PASS" starttime="20231014 14:54:01.128" endtime="20231014 14:54:01.810"/>
 </kw>
-<status status="PASS" starttime="20231014 07:30:56.551" endtime="20231014 07:30:57.098"/>
+<status status="PASS" starttime="20231014 14:54:01.128" endtime="20231014 14:54:01.811"/>
 </kw>
 <kw name="Get Element Count" library="SeleniumLibrary">
 <var>${product_count}</var>
 <arg>xpath://*[@class='product-list-item']</arg>
 <doc>Returns the number of elements matching ``locator``.</doc>
-<msg timestamp="20231014 07:30:57.111" level="INFO">${product_count} = 0</msg>
-<status status="PASS" starttime="20231014 07:30:57.099" endtime="20231014 07:30:57.111"/>
+<msg timestamp="20231014 14:54:01.825" level="INFO">${product_count} = 0</msg>
+<status status="PASS" starttime="20231014 14:54:01.811" endtime="20231014 14:54:01.825"/>
 </kw>
 <for flavor="IN RANGE">
 <var>${index}</var>
@@ -607,35 +619,35 @@
 <var>${product_xpath}</var>
 <arg>xpath:(//*[@class='product-list-item'])[${index}]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="NOT RUN" starttime="20231014 07:30:57.112" endtime="20231014 07:30:57.112"/>
+<status status="NOT RUN" starttime="20231014 14:54:01.827" endtime="20231014 14:54:01.827"/>
 </kw>
 <kw name="Verify Product Listing">
 <arg>${product_xpath}</arg>
-<status status="NOT RUN" starttime="20231014 07:30:57.113" endtime="20231014 07:30:57.113"/>
+<status status="NOT RUN" starttime="20231014 14:54:01.827" endtime="20231014 14:54:01.827"/>
 </kw>
-<status status="NOT RUN" starttime="20231014 07:30:57.112" endtime="20231014 07:30:57.113"/>
+<status status="NOT RUN" starttime="20231014 14:54:01.827" endtime="20231014 14:54:01.827"/>
 </iter>
-<status status="NOT RUN" starttime="20231014 07:30:57.112" endtime="20231014 07:30:57.113"/>
+<status status="NOT RUN" starttime="20231014 14:54:01.826" endtime="20231014 14:54:01.827"/>
 </for>
 <doc>Verify if each product on the category page has a title, price, and an "Add to Cart" button.</doc>
 <tag>Medium</tag>
-<status status="PASS" starttime="20231014 07:30:56.550" endtime="20231014 07:30:57.113"/>
+<status status="PASS" starttime="20231014 14:54:01.127" endtime="20231014 14:54:01.828"/>
 </test>
 <kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20231014 07:30:57.116" endtime="20231014 07:30:59.246"/>
+<status status="PASS" starttime="20231014 14:54:01.828" endtime="20231014 14:54:04.056"/>
 </kw>
-<status status="FAIL" starttime="20231014 07:30:35.893" endtime="20231014 07:30:59.246"/>
+<status status="PASS" starttime="20231014 14:53:42.141" endtime="20231014 14:54:04.056"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="1" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="2" fail="1" skip="0">Medium</stat>
+<stat pass="3" fail="0" skip="0">Medium</stat>
 </tag>
 <suite>
-<stat pass="2" fail="1" skip="0" id="s1" name="Testingjimmy">Testingjimmy</stat>
+<stat pass="3" fail="0" skip="0" id="s1" name="Testingjimmy">Testingjimmy</stat>
 </suite>
 </statistics>
 <errors>

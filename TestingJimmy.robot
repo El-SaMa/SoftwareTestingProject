@@ -34,28 +34,21 @@ Verify Product Listing
     Should Be True    ${price_exists}
     Should Be True    ${add_to_cart_exists}
 
-Search Product
-    [Arguments]    ${search_keyword}
-    Input Text    //*[@id="searchinput"]    ${search_keyword}  
-    Click Element    //*[@id="qps-search-button"]
-    Wait Until Page Contains    ${search_keyword}
+Search For Product, Open First Result And Check Page
+    [Arguments]  ${product_name}  ${keyword}
+    Input Text  id:searchinput  ${product_name}
+    Press Keys  id:searchinput  ENTER
+    Sleep  1s
+    ${first_product_link}=  Get WebElement  xpath://html/body/main/div[2]/div/div[2]/div[5]/div/div[1]/product-box/div[2]
+    Sleep  1s
+    Capture Element Screenshot  ${first_product_link}  filename=first_product.png
+    Click Element  ${first_product_link}
+    Page Should Contain  ps5
 
-Take Screenshot Of First Product
-    ${first_product_xpath}=    Set Variable    //*[@id="productsearchpage"]/div[2]/div[5]/div/div[1]/product-box/div[2]  # Product Card
-    Capture Element Screenshot    ${first_product_xpath}    first_product_screenshot.png
 
-Navigate To First Product Page
-    ${first_product_link_xpath}=    Set Variable    xpath://*[@class='product-list-item'][1]//a  # Assuming products are linked via 'a' tags
-    Click Element    ${first_product_link_xpath}
-    Wait Until Page Contains Element    tag:h1  # Waiting for the product page to load
 
-Verify Keyword In Product Page
-    [Arguments]    ${keyword}
-    Page Should Contain    ${keyword}  
 
 ######################################################################################Test Caases###################
-
-*** Test Cases ***
 # Mandatory 5 Test Cases 
 #Does all product categories have a "landing page"
 # Test search feature from main page (search keyword is: ps5)
@@ -65,7 +58,7 @@ Verify Keyword In Product Page
 # Can you find link "Lisää koriin" from product page
 # Can you find icon related to link "Lisää koriin". Robot takes element screenshot from icon.
 # Robot adds product into shopping cart
-
+*** Test Cases ***
 TC_UI_1 Verify All Product Categories Have a Landing Page
     [Tags]    Medium
     [Documentation]    Verify if all product categories have a "landing page".
@@ -78,15 +71,11 @@ TC_UI_1 Verify All Product Categories Have a Landing Page
         Run Keyword If  '${category_text}' == 'Kampanjat'  Continue For Loop
         Verify Category Landing Page  ${category_xpath}
     END
-
-TC_UI_2 Verify Search Feature And Product Details
-    [Tags]    Medium
-    [Documentation]    Use search feature with keyword "ps5", navigate to the first product's details and verify its contents.
-    [Setup]    Navigate To Main Page
-    Search Product    ps5
-    Take Screenshot Of First Product
-    Navigate To First Product Page
-    Verify Keyword In Product Page    ps5
+TC_UI_2 Verify Product Search And Details
+    [Tags]  Medium
+    [Documentation]  Test search feature from main page (search keyword is: ps5).
+    [Setup]  Navigate To Main Page
+    Search For Product, Open First Result And Check Page  ps5  ps5
 
 ############################
 # Extra 5 Test Cases:
