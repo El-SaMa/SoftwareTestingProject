@@ -110,9 +110,11 @@ TC_UI_2 Verify Product Search And Details
 
 
 TC_UI_3 Find link "Lisää koriin" from product page
-    
-    Page Should Contain Link    //a[@title="Lisää koriin"]
+    [Tags]  Medium
+    [Documentation]  Find link "Lisää koriin" from product page On The PS5 Product.
 
+    # Verify Page Contains Add To Cart Button / Link
+    Page Should Contain Link    //a[@title="Lisää koriin"]
 
 TC_UI_4 Find icon related to link "Lisää koriin"
     [Tags]  Medium
@@ -241,3 +243,4 @@ TC_UI_7 Verify Product Sorting on Search Page
 
 
 
+TC_UI_8
