@@ -59,6 +59,23 @@ Verify Category Product Listing
     # Verify that products are displayed on the category page
     Element Should Be Visible    ${product_listing}
 
+Verify Products In Price Range
+    [Arguments]    ${min_value}    ${max_value}
+    # Get the list of product prices displayed on the page.
+    ${product_prices}=    Get WebElements    xpath://div[@class='product-price']
+    
+    # Iterate through each product price and check if it falls within the selected range.
+    FOR    ${price}    IN    @{product_prices}
+        ${price_text}=    Get Text    ${price}
+        ${price_numeric}=    Evaluate    ${price_text.replace('€', '').replace(',', '')}    # Remove '€' and ',' from the price text and convert to numeric
+        
+        # Verify if the price is within the selected range.
+        ${price_within_range}=    Evaluate    ${min_value} <= ${price_numeric} <= ${max_value}
+        
+        # Check if the price is within the selected range and fail the test if not.
+        Should Be True    ${price_within_range}    Product price ${price_text} is not within the selected range (${min_value}-${max_value})
+    END
+
 ######################################################################################Test Caases###################
 # Mandatory 5 Test Cases 
 #Does all product categories have a "landing page"
@@ -79,6 +96,7 @@ Verify Category Product Listing
 # Can you find link "Lisää koriin" from product page
 # Can you find icon related to link "Lisää koriin". Robot takes element screenshot from icon.
 # Robot adds product into shopping cart
+*** Test Cases ***
 TC_UI_1 Verify All Product Categories Have a Landing Page
     [Tags]    Medium
     [Documentation]    Verify if all product categories have a "landing page".
@@ -91,7 +109,6 @@ TC_UI_1 Verify All Product Categories Have a Landing Page
         Run Keyword If  '${category_text}' == 'Kampanjat'  Continue For Loop
         Verify Category Landing Page  ${category_xpath}
     END
-
 
 TC_UI_2 Verify Product Search And Details
     [Tags]  Medium
@@ -107,7 +124,6 @@ TC_UI_2 Verify Product Search And Details
     Open First Product
     sleep    2s
     Check Product Page for ps5
-
 
 TC_UI_3 Find link "Lisää koriin" from product page
     [Tags]  Medium
@@ -158,12 +174,11 @@ TC_UI_5 Add Product to Shopping Cart
     # Verify that the product has been removed from the cart
     Page Should Not Contain  ps5
 
-
 ############################
 # Extra 5 Test Cases:
     # TC_UI_6 Verify Product Listings on Category Page
     # TC_UI_7 Verify Product Sorting on Search Page Asc Price And Capture ScreenShot 
-    #
+    # TC_UI_8 Verify Price Range Filtering
     #
     #
 
@@ -208,10 +223,8 @@ TC_UI_7 Verify Product Sorting on Search Page
     # Wait for the dropdown menu to appear (if needed)
     Wait Until Element Is Visible  xpath://*[@id="productlist-sorting"]/div/ul/li[7]/a
 
-
     # Click the desired item inside the dropdown menu
     Click Element  xpath://*[@id="productlist-sorting"]/div/ul/li[7]/a     # Hinta (Pienin-Suurin) Asc
-
 
 
     Sleep  2s  # Add a delay to ensure the page is fully updated after sorting
@@ -221,27 +234,39 @@ TC_UI_7 Verify Product Sorting on Search Page
     # Capture a screenshot after sorting
     Capture Page Screenshot  After_Sorting.png
 
-
     # Verify And Compare the two lists to ensure they match when sorted in ascending order
      Should Not Be Equal  ${unsorted_prices}  ${sorted_prices}
 
+TC_UI_8 Verify Price Range Filtering
+    [Tags]    Medium
+    [Documentation]    Verify price range filtering functionality using input fields.
+    [Setup]    Go To   https://www.jimms.fi/fi/Product/Search?q=ps5
+
+    # Set the minimum and maximum values for the price range.
+    ${min_value}=    Set Variable    500
+    ${max_value}=    Set Variable    1000
+
+    # Set the XPath expressions for the input fields.
+    # Use the "data-bind" attribute to locate the "min" input field
+    ${min_input_xpath}=  Set Variable  xpath://input[@data-bind="numeric: filterSliderMin, value: filterMinText"]
+
+    ${max_input_xpath}=    Set Variable    xpath://input[@data-bind="numeric: filterSliderMax, value: filterMaxText"]
+
+    # Implement the logic to set the price range using the input fields.
+    Input Text    ${min_input_xpath}    ${min_value}
+    Input Text    ${max_input_xpath}    ${max_value}
+
+    # Press Enter to apply the price range filter (if required).
+    Press Keys    ${min_input_xpath}   ENTER
+    Sleep    2s
+    # You may need to adjust the key code (\\13) based on your specific website's behavior.
+
+    # Use a custom keyword to verify if the products displayed match the selected price range.
+    Verify Products In Price Range    ${min_value}    ${max_value}
+
+    # End of test case. PASSES WITH A BUG. 
+
+# Custom keyword to verify products in the selected price range.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-TC_UI_8
