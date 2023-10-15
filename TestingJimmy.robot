@@ -139,8 +139,8 @@ TC_UI_5 Add Product to Shopping Cart
     # Verify that the product has been added to the shopping cart 
 
     # Navigate to the cart page
+    Sleep    2s
     Go To  https://www.jimms.fi/fi/ShoppingCart
-
     # Refresh the cart page
     Reload Page
 
@@ -153,6 +153,7 @@ TC_UI_5 Add Product to Shopping Cart
 
     # Refresh the cart page
     Reload Page
+    Sleep    1s
 
     # Verify that the product has been removed from the cart
     Page Should Not Contain  ps5
