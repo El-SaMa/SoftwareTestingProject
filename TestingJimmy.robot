@@ -76,16 +76,50 @@ Verify Products In Price Range
         Should Be True    ${price_within_range}    Product price ${price_text} is not within the selected range (${min_value}-${max_value})
     END
 
+Get Body Background Color
+    [Documentation]    Get the background color of the body element.
+    ${background_color}=    Execute JavaScript    return window.getComputedStyle(document.body, null).getPropertyValue('background-color')
+    [Return]    ${background_color}
+
+Switch To Day Mode
+    [Documentation]    Switch to day mode.
+    Click Element    xpath:/html/body/div[1]/div/div/span
+    Click Element    xpath:/html/body/div[1]/div/div/ul/li[1]/button
+
+Switch To Night Mode
+    [Documentation]    Switch to night mode.
+    Click Element    xpath:/html/body/div[1]/div/div/span
+    Click Element    xpath:/html/body/div[1]/div/div/ul/li[2]/button
+
+Verify Background Color Change
+    [Arguments]    ${expected_color}
+    ${current_color}=    Get Body Background Color
+    Should Be Equal As Strings    ${current_color}    ${expected_color}
+
+Check Footer Links
+    [Documentation]    Check the status of footer links
+    [Tags]    Medium
+    [Timeout]    5m
+
+    @{footer_links}=    Get WebElements    xpath://div[@class="col-lxs-6 col-lg-3 mb-4 mb-lg-0"]//a[@class="nav-link footer-link"]
+
+    FOR    ${link}    IN    @{footer_links}
+        ${link_text}=    Get Text    ${link}
+        ${link_url}=    Get Element Attribute    ${link}    href
+
+        Go To    ${link_url}
+        ${status}=    Run Keyword And Return Status    Page Should Contain    404 Not Found
+        Log    Link '${link_text}' - Response Status Code: ${status}
+        Run Keyword If    ${status}    Log    Link '${link_text}' is Broken: ${link_url}
+        ...    ELSE    Log    Link '${link_text}' is Valid: ${link_url}
+        Go Back
+    END
+
+
+
+
+
 ######################################################################################Test Caases###################
-# Mandatory 5 Test Cases 
-#Does all product categories have a "landing page"
-# Test search feature from main page (search keyword is: ps5)
-        #robot takes element screenshot from first product
-        #robot drills down to product page
-        #robot checks that there is something in product page what matches to keyword what was used in search
-# Can you find link "Lisää koriin" from product page
-# Can you find icon related to link "Lisää koriin". Robot takes element screenshot from icon.
-# Robot adds product into shopping cart
 *** Test Cases ***
 # Mandatory 5 Test Cases 
 #Does all product categories have a "landing page"
@@ -139,6 +173,7 @@ TC_UI_4 Find icon related to link "Lisää koriin"
     ${icon_element}=  Get WebElement  xpath://*[@id="product-cta-box"]/div/div[2]/div[2]/addto-cart-wrapper/div/a
 
     Capture Element Screenshot  ${icon_element}  filename=icon.png
+    Sleep    1s
 
 TC_UI_5 Add Product to Shopping Cart
     [Tags]    Medium
@@ -168,7 +203,7 @@ TC_UI_5 Add Product to Shopping Cart
 
     # Refresh the cart page
     Reload Page
-    Sleep    1s
+    Sleep    2s
 
     # Verify that the product has been removed from the cart
     Page Should Not Contain  ps5
@@ -177,7 +212,7 @@ TC_UI_5 Add Product to Shopping Cart
 # Extra 5 Test Cases:
     # TC_UI_6 Verify Product Listings on Category Page
     # TC_UI_7 Verify Product Sorting on Search Page Asc Price And Capture ScreenShot 
-    # TC_UI_8 Verify Price Range Filtering
+    #
     #
     #
 
@@ -263,9 +298,44 @@ TC_UI_8 Verify Price Range Filtering
     # Use a custom keyword to verify if the products displayed match the selected price range.
     Verify Products In Price Range    ${min_value}    ${max_value}
 
-    # End of test case. PASSES WITH A BUG. 
+    # End of test case. PASSES WITH A BUG. The price range filter is not working correctly.
 
-# Custom keyword to verify products in the selected price range.
+TC_UI_9 Verify Day/Night Mode Switching    
+    [Tags]    Medium
+    [Documentation]    Verify day/night mode switching functionality.
+    [Setup]    Navigate To Main Page
 
+    # Get the current body color
+    ${day_color}=    Get Body Background Color
 
+    # Switch to night mode
+    Switch To Night Mode
 
+    # Verify that the body color has changed
+    Verify Background Color Change    rgb(26, 30, 33)
+
+    # Switch back to day mode
+    Switch To Day Mode
+
+    # Verify that the body color has changed back to the original day color
+    Verify Background Color Change    rgb(245, 245, 245)
+
+    # Take a screenshot before and after
+    Capture Page Screenshot    before_switch.png
+    Sleep    2s
+
+    # Switch to night mode again
+    Switch To Night Mode
+
+    # Take a screenshot after switching to night mode again
+    Capture Page Screenshot    after_switch.png
+    Sleep    2s
+
+    # Verify that the body color has changed to night mode again
+    Verify Background Color Change    rgb(26, 30, 33)
+TC_UI_10 Verify Footer Links
+    [Tags]    Simple
+    [Documentation]    Verify that all footer links are working correctly.
+    [Setup]    Navigate To Main Page
+
+    Check Footer Links
