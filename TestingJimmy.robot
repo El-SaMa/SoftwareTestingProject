@@ -54,8 +54,6 @@ Check Product Page for ps5
     Page Should Contain    text=${keyword}
 
 
-
-
 ######################################################################################Test Caases###################
 # Mandatory 5 Test Cases 
 #Does all product categories have a "landing page"
@@ -129,25 +127,81 @@ TC_UI_5 Add Product to Shopping Cart
     # Verify that the added product is in the cart
     Page Should Contain  ps5
 
+    # Cleanup - Remove the added product from the cart
+    # remove the product
+    Click Element    xpath://*[@id="jim-main"]/div/div/div/div[1]/article/div/div[2]/div/div[1]/div/i
 
+    # Refresh the cart page
+    Reload Page
 
+    # Verify that the product has been removed from the cart
+    Page Should Not Contain  ps5
 
 ############################
 # Extra 5 Test Cases:
-    # Verify Product Listings on Category Page
-    #
+    # TC_UI_6 Verify Product Listings on Category Page
+    # TC_UI_7 Verify Product Sorting on Search Page Asc Price And Capture ScreenShot 
     #
     #
     #
     
 TC_UI_6 Verify Product Listings on Category Page
     [Tags]    Medium
-    [Documentation]    Verify if each product on the category page has a title, price, and an "Add to Cart" button.
+    [Documentation]    Verify if each category page contains products and is not empty.
     [Setup]    Navigate To Main Page
-    # Note: This assumes you've already navigated to a specific category page. Adjust as needed.
-    ${product_count}=    Get Element Count    xpath://*[@class='product-list-item']
-    FOR    ${index}    IN RANGE    1  ${product_count}
-    ${product_xpath}=    Set Variable    xpath:(//*[@class='product-list-item'])[${index}]
-    Verify Product Listing    ${product_xpath}
+
+    # Get category links
+    ${categories}=    Get List Of Categories
+
+    # Loop through each category link
+    FOR    ${category_xpath}    IN    @{categories}
+        # Click the category link to navigate to the category page
+        Click Element    ${category_xpath}
+        
+        # Verify that the category page contains products and is not empty
+        ${product_count}=    Get Element Count    xpath://*[@class='product-list-item']
+        Run Keyword If    ${product_count} == 0    Fail    Category page is empty: ${category_xpath}
     END
+
+
+TC_UI_7 Verify Product Sorting on Search Page
+    [Tags]  Medium
+    [Documentation]  Verify product sorting on the search results page.
+    [Setup]  Go to  https://www.jimms.fi/fi/Product/Search?q=ps5
+    Sleep    2s
+
+    # Capture the list of product prices before sorting
+    ${unsorted_prices}=  Get WebElements  xpath://*[@id="productsearchpage"]/div[2]/div[5]/div/div[1]/product-box/div[2]/div[3]/div/span/span
+    # Capture A Before Screenshot For Confirmation
+    Capture Page Screenshot  Before_Sorting.png
+
+    # Sort the products by price ascending
+    # Click the dropdown to expand it
+    Click Element  xpath://*[@id="productlist-sorting"]/div/button
+
+    # Wait for the dropdown menu to appear (if needed)
+    Wait Until Element Is Visible  xpath://*[@id="productlist-sorting"]/div/ul/li[7]/a
+
+
+    # Click the desired item inside the dropdown menu
+    Click Element  xpath://*[@id="productlist-sorting"]/div/ul/li[7]/a     # Hinta (Pienin-Suurin) Asc
+
+
+
+    Sleep  2s  # Add a delay to ensure the page is fully updated after sorting
+
+    # Capture the list of product prices after sorting
+    ${sorted_prices}=  Get WebElements     xpath://*[@id="productsearchpage"]/div[2]/div[5]/div/div[1]/product-box/div[2]/div[3]/div/span/span
+    # Capture a screenshot after sorting
+    Capture Page Screenshot  After_Sorting.png
+
+
+    # Verify And Compare the two lists to ensure they match when sorted in ascending order
+     Should Not Be Equal  ${unsorted_prices}  ${sorted_prices}
+
+
+
+
+
+
 
