@@ -96,7 +96,6 @@ Verify Products In Price Range
 # Can you find link "Lisää koriin" from product page
 # Can you find icon related to link "Lisää koriin". Robot takes element screenshot from icon.
 # Robot adds product into shopping cart
-*** Test Cases ***
 TC_UI_1 Verify All Product Categories Have a Landing Page
     [Tags]    Medium
     [Documentation]    Verify if all product categories have a "landing page".
