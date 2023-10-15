@@ -48,11 +48,16 @@ Open First Product
     ${first_product_link}=  Get WebElement  xpath://html/body/main/div[2]/div/div[2]/div[5]/div/div[1]/product-box/div[2]/div[2]/h5/a/span
     Click Element  ${first_product_link}
     Sleep  2s  # Add a delay to ensure the product page loads
-
+Capture URL Of The Product Page
+    ${product_page_url}=  Get Location
+    Set Suite Variable  ${product_page_url}  ${product_page_url}  # Store the URL in a suite variable
 Check Product Page for ps5
     ${keyword}=  Get Text  id:searchinput
     Page Should Contain    text=${keyword}
-
+Verify Category Product Listing
+    [Arguments]    ${product_listing}
+    # Verify that products are displayed on the category page
+    Element Should Be Visible    ${product_listing}
 
 ######################################################################################Test Caases###################
 # Mandatory 5 Test Cases 
@@ -65,6 +70,15 @@ Check Product Page for ps5
 # Can you find icon related to link "Lisää koriin". Robot takes element screenshot from icon.
 # Robot adds product into shopping cart
 *** Test Cases ***
+# Mandatory 5 Test Cases 
+#Does all product categories have a "landing page"
+# Test search feature from main page (search keyword is: ps5)
+        #robot takes element screenshot from first product
+        #robot drills down to product page
+        #robot checks that there is something in product page what matches to keyword what was used in search
+# Can you find link "Lisää koriin" from product page
+# Can you find icon related to link "Lisää koriin". Robot takes element screenshot from icon.
+# Robot adds product into shopping cart
 TC_UI_1 Verify All Product Categories Have a Landing Page
     [Tags]    Medium
     [Documentation]    Verify if all product categories have a "landing page".
@@ -99,6 +113,7 @@ TC_UI_3 Find link "Lisää koriin" from product page
     
     Page Should Contain Link    //a[@title="Lisää koriin"]
 
+
 TC_UI_4 Find icon related to link "Lisää koriin"
     [Tags]  Medium
     [Documentation]  Find the icon related to the "Lisää koriin" link on the product page.
@@ -111,6 +126,9 @@ TC_UI_4 Find icon related to link "Lisää koriin"
 TC_UI_5 Add Product to Shopping Cart
     [Tags]    Medium
     [Documentation]    Robot adds a product into the shopping cart.
+
+    # Precondition: Wait until the product page is loaded
+    Wait Until Page Contains Element    xpath://a[@title="Lisää koriin"]
     
     # Click the "Lisää koriin" button to add the product to the shopping cart
     Sleep    2s
@@ -137,6 +155,7 @@ TC_UI_5 Add Product to Shopping Cart
     # Verify that the product has been removed from the cart
     Page Should Not Contain  ps5
 
+
 ############################
 # Extra 5 Test Cases:
     # TC_UI_6 Verify Product Listings on Category Page
@@ -144,25 +163,29 @@ TC_UI_5 Add Product to Shopping Cart
     #
     #
     #
-    
+
 TC_UI_6 Verify Product Listings on Category Page
     [Tags]    Medium
     [Documentation]    Verify if each category page contains products and is not empty.
     [Setup]    Navigate To Main Page
 
-    # Get category links
-    ${categories}=    Get List Of Categories
-
-    # Loop through each category link
-    FOR    ${category_xpath}    IN    @{categories}
-        # Click the category link to navigate to the category page
+    ${category_count}=    Get Element Count    xpath://*[@id="sitemegamenu"]/nav/ul/li/a
+    FOR    ${index}    IN RANGE    1    ${category_count}
+        ${category_xpath}=    Set Variable    xpath:(//*[@id="sitemegamenu"]/nav/ul/li/a)[${index}]
+        ${category_text}=    Get Text    ${category_xpath}
+        Run Keyword If    '${category_text}' == 'Kampanjat'    Continue For Loop  # Skip 'Kampanjat' category
+        # Navigate to the category page
         Click Element    ${category_xpath}
-        
-        # Verify that the category page contains products and is not empty
-        ${product_count}=    Get Element Count    xpath://*[@class='product-list-item']
-        Run Keyword If    ${product_count} == 0    Fail    Category page is empty: ${category_xpath}
-    END
+        sleep    2s
+        # Verify that products are displayed on the category page
+        ${product_listings}=    Get WebElement    xpath://*[@id="jim-main"]/div[2]/div/div[2]/div[4]/div/div[1]/product-box/div[2]/div[2]/h5/a
+        Element Should Be Visible    ${product_listings}
 
+        # Add additional verifications or actions for each category here if needed
+
+        # Navigate back to the main page
+        Navigate To Main Page
+    END
 
 TC_UI_7 Verify Product Sorting on Search Page
     [Tags]  Medium
@@ -198,6 +221,19 @@ TC_UI_7 Verify Product Sorting on Search Page
 
     # Verify And Compare the two lists to ensure they match when sorted in ascending order
      Should Not Be Equal  ${unsorted_prices}  ${sorted_prices}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
