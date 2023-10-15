@@ -17,7 +17,8 @@ Get List Of Categories
     ${categories}=    Get WebElements    xpath://*[@id="sitemegamenu"]/nav/ul/li/a
     [Return]    ${categories}
 
-Verify Category Landing Page    [Arguments]    ${category_xpath}
+Verify Category Landing Page    
+    [Arguments]    ${category_xpath}
     Scroll Element Into View    ${category_xpath}
     Click Element    ${category_xpath}
     Wait Until Page Contains Element    tag:h1
@@ -334,7 +335,7 @@ TC_UI_9 Verify Day/Night Mode Switching
     # Verify that the body color has changed to night mode again
     Verify Background Color Change    rgb(26, 30, 33)
 TC_UI_10 Verify Footer Links
-    [Tags]    Simple
+    [Tags]    Medium
     [Documentation]    Verify that all footer links are working correctly.
     [Setup]    Navigate To Main Page
 
