@@ -7,11 +7,11 @@ Suite Teardown    Close Browser
 *** Keywords ***
 
 Setup Browser And Maximize
-    Open Browser    http://jimms.fi    chrome
+    Open Browser    https://jimms.fi    chrome
     Maximize Browser Window
 
 Navigate To Main Page
-    Go To    http://jimms.fi
+    Go To    https://jimms.fi
 
 Get List Of Categories
     ${categories}=    Get WebElements    xpath://*[@id="sitemegamenu"]/nav/ul/li/a
@@ -101,7 +101,6 @@ TC_UI_3 Find link "Lisää koriin" from product page
     
     Page Should Contain Link    //a[@title="Lisää koriin"]
 
-*** Test Cases ***
 TC_UI_4 Find icon related to link "Lisää koriin"
     [Tags]  Medium
     [Documentation]  Find the icon related to the "Lisää koriin" link on the product page.
@@ -116,10 +115,20 @@ TC_UI_5 Add Product to Shopping Cart
     [Documentation]    Robot adds a product into the shopping cart.
     
     # Click the "Lisää koriin" button to add the product to the shopping cart
+    Sleep    2s
     Click Element    xpath://a[@title="Lisää koriin"]
     
-    # Verify that the product has been added to the shopping cart (You may need to customize this part)
-    
+    # Verify that the product has been added to the shopping cart 
+
+    # Navigate to the cart page
+    Go To  https://www.jimms.fi/fi/ShoppingCart
+
+    # Refresh the cart page
+    Reload Page
+
+    # Verify that the added product is in the cart
+    Page Should Contain  ps5
+
 
 
 
