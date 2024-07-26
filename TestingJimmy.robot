@@ -20,7 +20,7 @@ Get List Of Categories
 Verify Category Landing Page    
     [Arguments]    ${category_xpath}
     Scroll Element Into View    ${category_xpath}
-    Click Element    ${category_xpath}
+Click Element    ${category_xpath}
     Wait Until Page Contains Element    tag:h1
     Navigate To Main Page
 
